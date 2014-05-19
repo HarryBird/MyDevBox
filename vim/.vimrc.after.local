@@ -1,0 +1,116 @@
+" ======= General ========= "
+colorscheme molokai
+set mouse=
+let mapleader = ","
+set smartcase
+set nospell
+" Ctrl+k/j/h/l   Jump between the split frame
+nmap <C-k> <C-S-W>k
+nmap <C-j> <C-S-W>j
+nmap <C-h> <C-S-W>h
+nmap <C-l> <C-S-W>l
+" Close current frame 
+nnoremap <F12> :close<CR>
+" display current frame only
+nnoremap <S-F12> :only<CR>
+
+
+"manual  手工定义折叠
+"indent  更多的缩进表示更高级别的折叠
+"expr    用表达式来定义折叠
+"syntax  用语法高亮来定义折叠
+"diff    对没有更改的文本进行折叠
+"marker  对文中的标志折叠
+set foldmethod=marker
+
+" ======= BufExplore ========= "
+" Config
+let g:bufExplorerDefaultHelp = 1
+let g:bufExplorerDetailedHelp = 1
+" Shortcut
+nmap <F8> :BufExplorer <CR>
+
+" ======= vim-indent-guides ========= "
+" Config
+let g:indent_guides_auto_colors = 0 "默认关闭
+" Usage
+" <Leader>ig  开启vim-indent
+"
+" ======= NERDTree ========= "
+" Config
+let NERDTreeChDirMode = 2 
+let NERDTreeWinSize = 30
+" Shortcut
+nmap <F5>  :NERDTreeToggle<CR>
+
+" ======= Ctrlp ========= "
+" Config
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_working_path_mode = 'ra'
+" Usage
+"Once CtrlP is open:
+"Press <F5> to purge the cache for the current directory to get new files, remove deleted files and apply new ignore options.
+"Press <c-f> and <c-b> to cycle between modes.
+"Press <c-d> to switch to filename only search instead of full path.
+"Press <c-r> to switch to regexp mode.
+"Use <c-j>, <c-k> or the arrow keys to navigate the result list.
+"Use <c-t> or <c-v>, <c-x> to open the selected entry in a new tab or in a new split.
+"Use <c-n>, <c-p> to select the next/previous string in the prompt's history.
+"Use <c-y> to create a new file and its parent directories.
+"Use <c-z> to mark/unmark multiple files and <c-o> to open them.
+
+" ======= Surround ========= "
+" Usage
+" cs: 包围符号替换
+" 'hello' => cs'" =>"hello"
+" 'hello' => cs'<q> =><q>hello</q>
+" <q>hello</q> => cst' => 'hello'
+" ds: 去掉包围符号
+" 'hello' => ds' => hello
+" ys: 添加包围符号
+" hello => ysiw' => 'hello'
+" yss: 整行添加包围符号
+" yS/ySS 单独一行并有缩进
+
+" ======= NerdCommenter ========= "
+" Usage
+" <Leader>cc 注释一行
+" <Leader>cu 取消注释一行
+" <Leader>ca 切换注释模式 ／／ 或 /**／
+" <Leader>cm 以block的最简方式注释一段代码
+" <Leader>ci 以独立注释单行的方式 注释选中的每一行， 注释模式取决<Leader>ca
+" <Leader>cs 以block的常规方式注释一段代码
+" <Leader>cA 在行尾巴追加注释，注释模式取决于<Leader>ca
+
+" ======= TagBar ========= "
+" Config
+let g:tagbar_autoclose=1
+let g:tagbar_show_linenumbers=1
+" Shortcut
+nnoremap <F6> :TagbarToggle<CR>
+
+" ======= EasyMotion ========= "
+" Shortcut
+map <Leader>mm <Plug>(easymotion-prefix)
+
+" ======= PIV ========= "
+" Config
+
+
+" ======= PhpHelper ========= "
+let g:phpBin='/usr/local/php/bin/php'
+" Check php script {{{1
+function! PhpChecker()
+    let checkCommand = '!' . g:phpBin . ' -l %'
+    exec expand( checkCommand )
+endfunction | " 1 }}}
+
+" Run php script {{{ 1
+function! PhpRunner()
+    let runCommand = '!' . g:phpBin . '  %'
+    exec expand( runCommand )
+endfunction | " 1 }}}
+
+:autocmd FileType php noremap <F3> :call PhpChecker()<CR>
+:autocmd FileType php noremap <F4> :call PhpRunner()<CR>

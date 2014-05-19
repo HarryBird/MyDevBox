@@ -1,0 +1,4 @@
+Plugin 'vim-scripts/bufexplorer.zip'
+"Plugin 'szw/vim-tags'
+Plugin 'ervandew/supertab'
+Plugin 'uguu-org/vim-matrix-screensaver'
