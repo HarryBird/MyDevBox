@@ -1,0 +1,73 @@
+#
+# ~/.screenrc
+#
+
+# 设置shell title 'bash'是默认title
+# 方法: 设置正确的shelltitle如下
+# 如果title不会自动刷新，再设置.bashrc，加入PROMPT_COMMAND='echo -n -e "\033k\033\134"'
+# 
+# 我的bash提示符一般是这样的： [liuqingy =>evan<= liuqingy]$ ls
+# 所以这么设置（意思是把$ 之后的输入内容当作window title，默认title是bash）：
+shelltitle '$|bash'
+
+# 启动时不显示欢迎屏幕
+startup_message off
+
+#  定义screen的功能键为Ctrl-V。
+#escape ^V^V
+#  定义screen的功能键为`。向终端输入`时应按 ``。
+escape ``
+
+# 屏幕缓冲区 1024 行。
+defscrollback 5000
+
+# 在最下一行显示窗口列表和时钟
+##    Explanation of hardstatus line    ##
+
+# Ignore the ' marks if you use these examples for yourself
+
+# Note that if you want to use the color brown under konsole
+# You actually use bright yellow (%{Y}).
+
+# Note the embeded space after the colon, I feel
+#  it just looks nicer with a blank between the
+#  text and console edge:
+#   '%{=b}%{G} Screens: '
+
+# This prints the window listing in blue:
+#   '%{b}%w'
+
+# This right-aligns what follows:
+#   '%='
+
+# This displays the time (hours and minutes) in 12hr format
+# and adds an AM/PM flag, in bold green:
+#   '%{G}%C%A'
+
+# This displays the day of the week:
+#   '%D'
+
+#This displays the date in Mon/day/year format:
+# and again I embeded a space to give me one space
+# between the text and console edge:
+#  '%M/%d/%Y '
+
+# The resultsing command give you a status line that
+#  looks like this:
+#   | Screens: 0* bash  <blanks zapped>         5:30PM  Fri, Jun/25/2004 |
+#  (The pipes indicate the edges of the xterm/console).
+
+# Green text, time, and date; windows in blue:
+hardstatus on
+hardstatus alwayslastline "%{=b}%{G} Screen(s): %{b}%w %=%{kG}%C%A , %M/%d/%Y "
+
+# 关闭错误提示
+vbell off
+
+# 按 escapekey l 显示窗口列表
+bind l windowlist -b
+
+defutf8 on
+
+#caption always "%{= wk} %{= KY} [%n]%t @ %H %{-} %= %{= KR} %l %{-} | %{= KG} %Y-%m-%d %{-} "
+msgwait 1
