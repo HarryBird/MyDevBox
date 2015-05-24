@@ -1,0 +1,123 @@
+#! /bin/bash
+HOME_BIN="${HOME}/bin"
+CONF_FILE=${HOME_BIN}/keys
+CONTROL_CHAR=" \\\\| "
+SPLIT_CHAR=" # "
+
+keyword=null
+list=null
+action=null
+from=null
+to=null
+while test $# -gt 0
+do
+    case $1 in 
+    -k | --keyword)
+        keyword=$2
+        shift
+        ;;
+    -g | --get)
+	action="get"
+        from=$2
+	to=$3
+        shift
+        shift
+        ;;
+    -p | --post)
+	action="post"
+        from=$2
+        to=$3
+        shift
+        ;;
+    -l | --list)
+        list=1
+        ;;
+    -*)
+        echo "Unrecognized option: $1"
+        exit
+        ;;
+    *)
+        break
+        ;;
+    esac
+    shift
+done
+
+
+HEADER="\n############## HOST LIST #################"
+OPTION="ID${SPLIT_CHAR}HOST${SPLIT_CHAR}USER${SPLIT_CHAR}ENV${SPLIT_CHAR}ROLE${SPLIT_CHAR}DESC"
+SELECT="\n#################\nSelect ID\n#################\n"
+echo $HEADER
+echo $OPTION
+
+if [ "X$list" != "Xnull" ]
+then
+    cat ${CONF_FILE}
+    exit 0
+elif [ "X$keyword" != "Xnull"  ]
+then
+    #cat ${CONF_FILE} | grep -i $keyword
+    declare -a QUERY
+    RES=()
+    for q in `echo $keyword | sed "s/,/ /g"`
+    do
+        QUERY[${#QUERY[@]}]=$q
+    done
+
+    if [ ${#QUERY[@]} -gt 1 ]
+    then
+        while read LINE
+        do
+                TMP=`echo $LINE | grep -i ${QUERY[0]}`
+                if [ "X$TMP" != "X" ]
+                then
+                    RES[${#RES[@]}]=$TMP
+                fi
+        done < ${CONF_FILE}
+        unset QUERY[0]
+
+        for q in ${QUERY[@]};do
+            total=${#RES[@]}
+            for (( i=0; i<$total; i++ )) ; do
+                TMP=`echo ${RES[$i]} | grep -i $q`
+                if [ "X$TMP" = "X" ]
+                then
+                    unset RES[$i]
+                fi
+            done
+        done
+        
+        final=${#RES[@]}
+        if [ $final -gt 0 ]
+        then
+            for (( i=0; i<$total; i++ )) ; do
+                if [ "X${RES[$i]}" != "X" ]
+                then
+                    echo ${RES[$i]}
+                fi
+            done
+        fi
+    else
+        cat ${CONF_FILE} | grep -i -E "$keyword"
+    fi
+
+fi
+
+echo $SELECT
+printf "Id: "
+read ID
+
+if [ "X$action" != "Xnull" ] && [ "X$from" != "Xnull" ] && [ "X$to" != "Xnull" ]
+then
+	if [ "X$action" == "Xget" ]
+	then
+		SSH=`grep -E "^$ID${SPLIT_CHAR}" ${CONF_FILE} | awk -F"${SPLIT_CHAR}" '{print "scp -r " \$3"@"\$2 ":'$from' '$to' "}'`
+	elif [ "X$action" == "Xpost" ]
+	then
+		SSH=`grep -E "^$ID${SPLIT_CHAR}" ${CONF_FILE} | awk -F"${SPLIT_CHAR}" '{print "scp -r '$from' " \$3"@"\$2 ":'$to' "}'`
+	fi
+else
+    SSH=`grep -E "^$ID${SPLIT_CHAR}" ${CONF_FILE} | awk -F"${SPLIT_CHAR}" '{print "ssh -X -A "$3"@"$2}'`
+fi
+echo $SSH
+exec $SSH
