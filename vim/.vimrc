@@ -15,6 +15,8 @@ set tags=.git/tags;$HOME       " consider the repo tags first, then
                                " note `;` sets the stop folder. :h file-search
 set cursorline
 
+set autochdir
+
 set modeline
 set modelines=5                " default numbers of lines to read for modeline instructions
 
@@ -37,6 +39,20 @@ set t_Co=256
 let g:is_posix = 1             " vim's default is archaic bourne shell, bring it up to the 90s
 let mapleader = ','
 let maplocalleader = '	'      " Tab as a local leader
+
+" 全局忽略文件
+set wildignore+=*.png,*.jpg,*.bmp,*.gif  " Binary images  
+set wildignore+=*.pyc                    " Python byte code  
+set wildignore+=*.sw?                    " Vim swap files
+set wildignore+=*.git,*.svn              " Version control tool
+set wildignore+=*.DS_Store               " OSX bullshit
+set wildignore+=*.tar.gz,*.zip,*.rar     " Compressed file
+
+" 设置文件编码和文件格式
+set encoding      =utf-8
+set termencoding  =utf-8
+set fileencoding  =utf-8
+set fileencodings =ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 " "}}}
 
 " Formatting "{{{
@@ -166,6 +182,22 @@ nmap <F8> :BufExplorer <CR>
 " Config
 let NERDTreeChDirMode = 2
 let NERDTreeWinSize = 30
+
+let NERDTreeAutoCenter        = 1  " 窗口居中
+let NERDTreeShowBookmarks     = 1  " 显示书签
+let NERDChristmasTree         = 1  " 让树更好看
+let NERDTreeCaseSensitiveSort = 1  " 让文件排列更有序
+let NERDTreeChDirMode         = 1  " 改变tree目录的同时改变工程的目录
+let NERDTreeHijackNetrw       = 1  " 当输入 [:e filename]不再显示netrw,而是显示nerdtree
+
+if exists("loaded_nerd_tree")
+        autocmd VimEnter * NERDTree
+    endif
+    "当打开vim且没有文件时自动打开NERDTree
+    "autocmd vimenter * if !argc() | NERDTree | endif
+"" 只剩 NERDTree时自动关闭
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
 " Shortcut
 nmap <F5>  :NERDTreeToggle<CR>
 
@@ -275,13 +307,6 @@ nnoremap <F6> :TagbarToggle<CR>
 " Shortcut
 map <Leader>mm <Plug>(easymotion-prefix)
 
-" ======= PIV ========= "
-" Config
-let g:pdv_cfg_display_Package=0
-let g:pdv_cfg_display_Version=0
-let g:pdv_cfg_display_License=0
-let g:pdv_cfg_Author='Harry<tianhai@smartisan.com>'
-let g:pdv_cfg_Copyright = "Copyright (c) 2014 All rights reserved."
 
 " ======= Vim-Multiple-Cursors ========= "
 " Shortcut
@@ -392,6 +417,10 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " ======= ag ========= "
 let g:ackprg = '/usr/local/Cellar/the_silver_searcher/0.28.0/bin/ag --nogroup --nocolor --column'
 let g:agprg = '/usr/local/Cellar/the_silver_searcher/0.28.0/bin/ag --nogroup --nocolor --column'
+
+" ======= indentLine ========= "
+let g:indentLine_color_term =139 
+let g:indentLine_char = '¦'
 
 " "}}}
 
