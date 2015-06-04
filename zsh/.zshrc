@@ -23,6 +23,7 @@ alias ali-ls="cat ~/.zshrc | egrep \"^alias\""
 alias vpn-20='ssh -A tianhai@172.16.21.20'
 alias tm-init="tm-ns dev && tm-ns test && tm-ns prod"
 alias git="/usr/local/Cellar/git/2.2.1/bin/git"
+alias go-dev="ssh tianhai@172.16.21.131 -p 22001 -A"
 
 #alias ls="ls --color=auto"
 #alias ll="ls --color -al"
