@@ -90,6 +90,7 @@ syntax on                      " enable syntax
 
 set mouse=a "enable mouse in GUI mode
 set mousehide                 " Hide mouse after chars typed
+set mouse=
 
 set number                  " line numbers Off
 set showmatch                 " Show matching brackets.
