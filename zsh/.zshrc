@@ -23,7 +23,7 @@ alias ali-ls="cat ~/.zshrc | egrep \"^alias\""
 alias vpn-20='ssh -A tianhai@172.16.21.20'
 alias tm-init="tm-ns dev && tm-ns test && tm-ns prod"
 alias git="/usr/local/Cellar/git/2.2.1/bin/git"
-alias go-dev="ssh tianhai@172.16.21.131 -p 22001 -A"
+alias go-dev="ssh tianhai@172.16.21.17 -A"
 
 #alias ls="ls --color=auto"
 #alias ll="ls --color -al"
@@ -298,3 +298,20 @@ PROMPT='%{$fg_bold[red]%}➜ %{$fg_bold[green]%}%p%{$fg[cyan]%}%d %{$fg_bold[blu
 
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
 autoload -U compinit && compinit -u
+
+# explain.sh begins
+explain () {
+  if [ "$#" -eq 0 ]; then
+    while read  -p "Command: " cmd; do
+      curl -Gs "https://www.mankier.com/api/explain/?cols="$(tput cols) --data-urlencode "q=$cmd"
+    done
+    echo "Bye!"
+  elif [ "$#" -eq 1 ]; then
+    curl -Gs "https://www.mankier.com/api/explain/?cols="$(tput cols) --data-urlencode "q=$1"
+  else
+    echo "Usage"
+    echo "explain                  interactive mode."
+    echo "explain 'cmd -o | ...'   one quoted command to explain it."
+  fi
+}
+
