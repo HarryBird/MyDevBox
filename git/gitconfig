@@ -1,0 +1,23 @@
+[core]
+    excludesfile = /Users/harry/.gitignore_global
+[difftool "sourcetree"]
+    cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
+    path =
+[mergetool "sourcetree"]
+    cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+    trustExitCode = true
+[user]
+    name = harry
+    email = harry.tianhai@gmail.com
+[push]
+    defult = simple
+    default = simple
+[alias]
+    a = add 
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+    df = diff 
+    log = log -p
+    logs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
