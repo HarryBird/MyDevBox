@@ -154,7 +154,7 @@ endif
 " "}}}
 "
 " Plugin "{{{
-source ~/.vim/Vundle.vim
+source ~/.config/nvim/Plugin.vim
 " "}}}
 
 " ColorScheme "{{{

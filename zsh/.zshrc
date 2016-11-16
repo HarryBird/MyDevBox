@@ -11,7 +11,8 @@ ZSH_THEME="robbyrussell"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias vim="/usr/local/Cellar/vim/7.4.488/bin/vim"
+#alias vim="/usr/local/Cellar/vim/7.4.488/bin/vim"
+alias vim="/usr/local/bin/nvim"
 alias tmux="tmux -2"
 alias tm-ls="tmux list-sessions"
 alias tm-at="tmux attach -t "
@@ -22,8 +23,14 @@ alias ttr="export TERM=xterm"
 alias ali-ls="cat ~/.zshrc | egrep \"^alias\""
 alias vpn-20='ssh -A tianhai@172.16.21.20'
 alias tm-init="tm-ns dev && tm-ns test && tm-ns prod"
-alias git="/usr/local/Cellar/git/2.2.1/bin/git"
+alias git="/usr/local/opt/git/bin/git"
 alias go-dev="ssh tianhai@172.16.21.17 -A"
+
+alias va-up="cd /Users/harry/V/CentOS-6.7 && vagrant up --provider virtualbox --provision"
+alias va-halt="cd /Users/harry/V/CentOS-6.7 && vagrant halt"
+alias va-ssh="cd /Users/harry/V/CentOS-6.7 && vagrant ssh"
+alias va-reload="cd /Users/harry/V/CentOS-6.7 && vagrant reload"
+alias va-po="cd /Users/harry/V/CentOS-6.7 && vagrant provision"
 
 #alias ls="ls --color=auto"
 #alias ll="ls --color -al"
@@ -45,6 +52,11 @@ alias listen="lsof -P -i -n"
 alias port='netstat -tulanp'
 # 获得你的公网IP地址和主机名
 alias ipinfo="curl ifconfig.me && curl ifconfig.me/host"
+
+alias perm_wireshark="sudo chgrp admin /dev/bpf* && chmod g+rw /dev/bpf*"
+
+
+
 # 创建目录并进入目录
 mcd() { mkdir -p "$1"; cd "$1";}
 # 进入目录并列表
@@ -117,7 +129,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 #export PATH="/opt/OpenPrinting-Gutenprint/sbin:/opt/OpenPrinting-Gutenprint/bin:/home/tianhai/bin:/opt/OpenPrinting-Gutenprint/sbin:/opt/OpenPrinting-Gutenprint/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/tianhai/bin:/usr/local/bin"
-export PATH=$PATH:/Users/harry/bin:
+export PATH=$PATH:/Users/harry/bin:/usr/local/bin:
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 export JRE_HOME=$JAVA_HOME/jre
 export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib  
@@ -294,7 +306,8 @@ $PR_CYAN$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT$PR_NO_COLOUR '
 
 #setprompt
 
-PROMPT='%{$fg_bold[red]%}➜ %{$fg_bold[green]%}%p%{$fg[cyan]%}%d %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%}% %{$reset_color%}> '
+#PROMPT='%{$fg_bold[red]%}➜ %{$fg_bold[green]%}%p%{$fg[cyan]%}%d %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%}% %{$reset_color%}> '
+PROMPT='%{$fg_bold[yellow]%}%n%{$fg_bold[red]%} ➽  %{$fg[green]%}%5(C.%-3d/~~/%1d.%d) %{$fg_bold[red]%}% ➜  %{$reset_color%}'
 
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
 autoload -U compinit && compinit -u
@@ -314,4 +327,7 @@ explain () {
     echo "explain 'cmd -o | ...'   one quoted command to explain it."
   fi
 }
+
+
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 
