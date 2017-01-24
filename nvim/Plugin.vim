@@ -29,4 +29,10 @@ Plug 'Yggdroot/indentLine'
 "Plug 'edkolev/tmuxline.vim'
 Plug 'CodeFalling/fcitx-vim-osx'
 Plug 'Valloric/YouCompleteMe'
+
+" phpcomplete
+"Plug 'shawncplus/phpcomplete.vim'
+"Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+"Plug 'Shougo/unite.vim'
+"Plug 'm2mdas/phpcomplete-extended'
 call plug#end()

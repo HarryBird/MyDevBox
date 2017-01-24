@@ -55,6 +55,8 @@ alias ipinfo="curl ifconfig.me && curl ifconfig.me/host"
 
 alias perm_wireshark="sudo chgrp admin /dev/bpf* && chmod g+rw /dev/bpf*"
 
+alias pon='export http_proxy=http://duotai:pEZ-0aBY8@smartisan.h.xduotai.com:25159;export https_proxy=$http_proxy'
+alias poff='unset http_proxy;unset https_proxy'
 
 
 # 创建目录并进入目录
@@ -329,5 +331,5 @@ explain () {
 }
 
 
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+#export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 

@@ -7,8 +7,8 @@
 	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 	trustExitCode = true
 [user]
-	name = tianhai
-	email = tianhai@smartisan.com
+	name = harry
+	email = harry.tianhai@gmail.com
 [branch]
     autosetuprebase = always
 [push]
@@ -17,10 +17,14 @@
 [alias]
     a = add 
     co = checkout
-    ci = commit
     st = status
     br = branch
     df = diff 
-    log = log -p
-    logs = log --pretty=format:"%C(yellow)%h\\ %C(green)%ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short --graph
+    ci = commit -s
+    cia = commit -s --amend
+    ;log = log --stat --online
+    wlog = log --pretty=format:"%C(yellow)%h\\ %C(green)%ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short --graph
+    wwlog = log -p --pretty=format:"%C(yellow)%h\\ %C(green)%ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short --graph
 
+[color]
+	ui = true
