@@ -28,7 +28,12 @@ Plug 'mhinz/vim-signify'
 Plug 'Yggdroot/indentLine'
 "Plug 'edkolev/tmuxline.vim'
 Plug 'CodeFalling/fcitx-vim-osx'
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
+"Plug 'wkentaro/conque.vim'
+
+Plug 'roxma/nvim-completion-manager'
+"Plug 'roxma/nvim-cm-php-language-server',  {'do': 'composer install && composer run-script parse-stubs'}
+
 
 " phpcomplete
 "Plug 'shawncplus/phpcomplete.vim'

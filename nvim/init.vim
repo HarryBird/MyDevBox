@@ -482,6 +482,13 @@ let g:ycm_autoclose_preview_window_after_completion=1
 
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR> " 跳转到定义处
 
+" ======= nvim-completion-manager ========= "
+"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+"let g:UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
+"inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
+
 " "}}}
 
 
