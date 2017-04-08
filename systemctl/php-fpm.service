@@ -1,0 +1,16 @@
+[Unit]
+Description=PHP FastCGI process manager
+After=local-fs.target network.target nginx.service
+
+[Service]
+PIDFile=/var/run/php-fpm.pid
+ExecStartPre=/usr/local/bin/php-fpm -y /usr/local/etc/php/7.1.3/php-fpm.conf -t
+ExecStart=/usr/local/bin/php-fpm -y /usr/local/etc/php/7.1.3/php-fpm.conf --daemonize
+ExecReload=/bin/kill -s USR2 $MAINPID
+ExecStop=/bin/kill -s QUIT $MAINPID
+Type=forking
+Restart=on-failure
+RestartPreventExitStatus=1
+
+[Install]
+WantedBy=multi-user.target

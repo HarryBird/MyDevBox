@@ -1,0 +1,15 @@
+[Unit]
+Description=Redis In-Memory Data Store
+After=network.target
+ 
+[Service]
+Type=forking
+ExecStart=/usr/local/bin/redis-server /usr/local/etc/redis/3.2.8/6379.conf 
+ExecStop=/usr/local/bin/redis-cli shutdown
+Restart=always
+PIDFile=/var/run/redis-6379.pid
+Restart=on-failure
+RestartPreventExitStatus=1
+
+[Install]
+WantedBy=multi-user.target
