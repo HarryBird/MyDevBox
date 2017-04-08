@@ -53,6 +53,7 @@ Plugin 'mhinz/vim-signify'
 " 缩进对齐线
 Plugin 'Yggdroot/indentLine'
 "Plugin 'edkolev/tmuxline.vim'
+Plugin 'wkentaro/conque'
 
 
 
