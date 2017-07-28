@@ -221,16 +221,17 @@ endfunction | " 1 }}}
 :autocmd FileType php noremap <F4> :call PhpRunner()<CR>
 
 " ======= AirLine ========= "
-let g:airline_theme="dark"
-let g:airline_powerline_fonts =0 
+let g:airline_theme="molokai"
+let g:airline_powerline_fonts =1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '>'
 
-if !exists('g:airline_symbols')
-      let g:airline_symbols = {}
-  endif
-  let g:airline_symbols.space = "\ua0"
+"let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_alt_sep = '>'
+"
+"if !exists('g:airline_symbols')
+"      let g:airline_symbols = {}
+"  endif
+"  let g:airline_symbols.space = "\ua0"
 
 
 "let g:airline_section_a = airline#section#create(['%<', 'file', 'readonly'])
@@ -327,6 +328,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_php_checkers=['php', 'phpcs']
+let g:syntastic_php_phpcs_args=' --standard=PSR2 -n'
+"let g:syntastic_quiet_messages = {"level": "warning"}
 
 
 
@@ -490,5 +494,30 @@ nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR> " 跳转到�
 "inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
 
 " "}}}
+
+
+" ======= vim-php-cs-fixer========= "
+" If php-cs-fixer is in $PATH, you don't need to define line below
+let g:php_cs_fixer_path = "~/bin/php-cs-fixer.phar" " define the path to the php-cs-fixer.phar
+
+" If you use php-cs-fixer version 1.x
+" let g:php_cs_fixer_level = "symfony"                   " options: --level (default:symfony)
+" let g:php_cs_fixer_config = "default"                  " options: --config
+" If you want to define specific fixers:
+"let g:php_cs_fixer_fixers_list = "linefeed,short_tag" " options: --fixers
+"let g:php_cs_fixer_config_file = '.php_cs'            " options: --config-file
+" End of php-cs-fixer version 1 config params
+
+" If you use php-cs-fixer version 2.x
+let g:php_cs_fixer_rules = "@PSR2"          " options: --rules (default:@PSR2)
+"let g:php_cs_fixer_cache = ".php_cs.cache" " options: --cache-file
+"let g:php_cs_fixer_config_file = '.php_cs' " options: --config
+" End of php-cs-fixer version 2 config params
+
+let g:php_cs_fixer_php_path = "php"               " Path to PHP
+let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by default (<leader>pcd)
+let g:php_cs_fixer_dry_run = 1                    " Call command with dry-run option
+let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
+
 
 

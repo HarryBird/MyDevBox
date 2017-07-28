@@ -11,6 +11,7 @@ Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 Plug 'spf13/PIV'
 Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'godlygeek/tabular'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'gcmt/wildfire.vim'
@@ -40,4 +41,9 @@ Plug 'roxma/nvim-completion-manager'
 "Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 "Plug 'Shougo/unite.vim'
 "Plug 'm2mdas/phpcomplete-extended'
+"
+
+Plug 'stephpy/vim-php-cs-fixer'
+Plug 'editorconfig/editorconfig-vim'
+
 call plug#end()

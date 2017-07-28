@@ -5,7 +5,49 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel9k/powerlevel9k"
+#POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+POWERLEVEL9K_DISABLE_RPROMPT=true
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context time dir rbenv vcs)
+
+# CONTEXT
+POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
+POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="130"
+POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="234"
+
+# TIME 
+POWERLEVEL9K_TIME_BACKGROUND="187"
+POWERLEVEL9K_TIME_FOREGROUND="234"
+
+# OS_ICON
+POWERLEVEL9K_OS_ICON_BACKGROUND="22"
+
+# DIR
+POWERLEVEL9K_DIR_HOME_BACKGROUND="025"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="025"
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="025"
+POWERLEVEL9K_DIR_HOME_FOREGROUND="250"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="250"
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="250"
+POWERLEVEL9K_SHORTEN_STRATEGY=truncate_from_right
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
+POWERLEVEL9K_SHORTEN_DELIMITER='~'
+#POWERLEVEL9K_DIR_PATH_SEPARATOR="%B"
+
+# VCS
+POWERLEVEL9K_VCS_CLEAN_FOREGROUND='106'
+POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='136'
+POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='208'
+
+POWERLEVEL9K_VCS_CLEAN_BACKGROUND='240'
+POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='240'
+POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='240'
+
+# FONT
+POWERLEVEL9K_MODE='awesome-fontconfig'
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -17,22 +59,20 @@ alias tmux="tmux -2"
 alias tm-ls="tmux list-sessions"
 alias tm-at="tmux attach -t "
 alias tm-ns="tmux new -s "
+alias tm-de="tmux detach "
 alias cr="clear"
 alias t256="export TERM=screen-256color"
 alias ttr="export TERM=xterm"
 alias ali-ls="cat ~/.zshrc | egrep \"^alias\""
-alias vpn-20='ssh -A tianhai@172.16.21.20'
-alias tm-init="tm-ns dev && tm-ns test && tm-ns prod"
 alias git="/usr/local/opt/git/bin/git"
-alias go-dev="ssh tianhai@172.16.21.17 -A"
 alias docker-pid="sudo docker inspect --format '{{.State.Pid}}'"
 alias docker-ip="sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 
-alias va-up="cd /Users/harry/V/CentOS-6.7 && vagrant up --provider virtualbox --provision"
-alias va-halt="cd /Users/harry/V/CentOS-6.7 && vagrant halt"
-alias va-ssh="cd /Users/harry/V/CentOS-6.7 && vagrant ssh"
-alias va-reload="cd /Users/harry/V/CentOS-6.7 && vagrant reload"
-alias va-po="cd /Users/harry/V/CentOS-6.7 && vagrant provision"
+alias va-up="cd /Users/harry/V/CentOS-7.2 && vagrant up --provider virtualbox --provision"
+alias va-halt="cd /Users/harry/V/CentOS-7.2 && vagrant halt"
+alias va-ssh="cd /Users/harry/V/CentOS-7.2 && vagrant ssh"
+alias va-reload="cd /Users/harry/V/CentOS-7.2 && vagrant reload"
+alias va-po="cd /Users/harry/V/CentOS-7.2 && vagrant provision"
 
 #alias ls="ls --color=auto"
 #alias ll="ls --color -al"
@@ -60,6 +100,8 @@ alias perm_wireshark="sudo chgrp admin /dev/bpf* && chmod g+rw /dev/bpf*"
 alias pon='export http_proxy=http://duotai:pEZ-0aBY8@smartisan.h.xduotai.com:25159;export https_proxy=$http_proxy'
 alias poff='unset http_proxy;unset https_proxy'
 alias gfw='proxychains4'
+
+eval $(/usr/local/bin/thefuck --alias geek)
 
 
 # 创建目录并进入目录
@@ -141,7 +183,7 @@ export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
 
 
 #PROMPT='%{$fg_bold[red]%}➜ %{$fg_bold[green]%}%p%{$fg[cyan]%}%d %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%}% %{$reset_color%}> '
-PROMPT='%{$fg_bold[yellow]%}%n%{$fg_bold[red]%} ➽  %{$fg[green]%}%5(C.%-3d/~~/%1d.%d) %{$fg_bold[red]%}% ➜  %{$reset_color%}'
+#PROMPT='%{$fg_bold[yellow]%}%n%{$fg_bold[red]%} ➽  %{$fg[green]%}%5(C.%-3d/~~/%1d.%d) %{$fg_bold[blue]%}$(git_prompt_info) %{$fg_bold[red]%}% ➜  %{$reset_color%}'
 
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
 autoload -U compinit && compinit -u

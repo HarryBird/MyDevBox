@@ -1,14 +1,14 @@
 [core]
 	excludesfile = /Users/harry/.gitignore_global
 [difftool "sourcetree"]
-	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
+	cmd = /usr/local/bin/bcomp $LOCAL $REMOTE
 	path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+	cmd = /usr/local/bin/bcomp $LOCAL $REMOTE $BASE $MERGED
 	trustExitCode = true
 [user]
 	name = harry
-	email = harry.tianhai@gmail.com
+	email = harry.tian@geekbang.org
 [branch]
     autosetuprebase = always
 [push]
@@ -28,3 +28,7 @@
 
 [color]
 	ui = true
+[mergetool]
+	keepBackup = true
+[commit]
+	template = /Users/harry/.stCommitMsg
