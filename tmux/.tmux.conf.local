@@ -22,7 +22,7 @@ tmux_conf_new_window_retain_current_path=false
 # new pane retains current path, possible values are:
 #   - true (default)
 #   - false
-tmux_conf_new_pane_retain_current_path=true
+tmux_conf_new_pane_retain_current_path=false
 
 # new pane tries to reconnect ssh sessions (experimental), possible values are:
 #   - true
@@ -49,7 +49,7 @@ tmux_conf_theme_window_bg='default'
 # highlight focused pane (tmux >= 2.1), possible values are:
 #   - true
 #   - false (default)
-tmux_conf_theme_highlight_focused_pane=false
+tmux_conf_theme_highlight_focused_panet=true
 
 # focused pane colours:
 tmux_conf_theme_focused_pane_fg='default'
@@ -94,7 +94,7 @@ tmux_conf_theme_status_attr='none'
 tmux_conf_theme_window_status_fg='#8a8a8a'              # light gray
 tmux_conf_theme_window_status_bg='#080808'              # dark gray
 tmux_conf_theme_window_status_attr='none'
-tmux_conf_theme_window_status_format='#I #W'
+tmux_conf_theme_window_status_format='#I:#W#F'
 #tmux_conf_theme_window_status_format='#{circled_window_index} #W'
 #tmux_conf_theme_window_status_format='#I #W#{?window_bell_flag,🔔,}#{?window_zoomed_flag,🔍,}'
 
@@ -104,7 +104,7 @@ tmux_conf_theme_window_status_format='#I #W'
 tmux_conf_theme_window_status_current_fg='#000000'      # black
 tmux_conf_theme_window_status_current_bg='#00afff'      # light blue
 tmux_conf_theme_window_status_current_attr='bold'
-tmux_conf_theme_window_status_current_format='#I #W'
+tmux_conf_theme_window_status_current_format='#I:#W#F'
 #tmux_conf_theme_window_status_current_format='#{circled_window_index} #W'
 #tmux_conf_theme_window_status_current_format='#I #W#{?window_zoomed_flag,🔍,}'
 
@@ -156,9 +156,9 @@ tmux_conf_theme_right_separator_sub=''  #   PowerlineSymbols.otf font
 #     - #{username}
 #     - #{username_ssh}
 #tmux_conf_theme_status_left=' ❐ #S | ↑#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} '
-tmux_conf_theme_status_left=' ❐ #S | ↑ '
+tmux_conf_theme_status_left=' ❐ #S | '
 #tmux_conf_theme_status_right='#{prefix}#{pairing} #{?battery_status, #{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} | #{hostname} '
-tmux_conf_theme_status_right='#{prefix}#{pairing}  , %R , %d %b | #{username}#{root} | #{hostname} '
+tmux_conf_theme_status_right='#{prefix}#{pairing}    %R | %m-%d | #{username}#{root} | #{hostname} '
 
 # status left style
 tmux_conf_theme_status_left_fg='#000000,#e4e4e4,#e4e4e4'  # black, white , white
@@ -167,8 +167,8 @@ tmux_conf_theme_status_left_attr='bold,none,none'
 
 # status right style
 tmux_conf_theme_status_right_fg='#8a8a8a,#e4e4e4,#000000' # light gray, white, black
-tmux_conf_theme_status_right_bg='#080808,#d70000,#e4e4e4' # dark gray, red, white
-tmux_conf_theme_status_right_attr='none,none,bold'
+tmux_conf_theme_status_right_bg='#005f00,#d70000,#e4e4e4' # dark gray, red, white
+tmux_conf_theme_status_right_attr='bold,none,bold'
 
 # pairing indicator
 tmux_conf_theme_pairing='👓'          # U+1F453
@@ -265,3 +265,39 @@ tmux_conf_copy_to_os_clipboard=false
 
 # move status line to top
 #set -g status-position top
+
+
+# 去除默认Ctrl-b
+unbind C-a
+unbind C-b
+unbind `
+
+#设置前缀为`
+set -g prefix `
+
+# 敲两次prefix 可以打出 prefix
+bind-key ` send-prefix
+
+# 默认shell
+set -g default-shell /bin/zsh
+
+bind-key s setw synchronize-panes
+
+unbind %
+bind | split-window -h # 使用|竖屏，方便分屏
+
+unbind '"'
+bind - split-window -v # 使用-横屏，方便分屏
+
+# 关闭当前window
+unbind ^k
+bind ^k confirm-before "kill-window"
+
+# 当前窗口最大化
+bind ^z run "tmux-zoom"
+
+setw -g mode-keys vi
+
+set -g status-justify centre
+
+run-shell /Users/harry/Code/Src/tmux-resurrect/resurrect.tmux
