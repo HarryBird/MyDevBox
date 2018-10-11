@@ -4,6 +4,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-scripts/bufexplorer.zip'
 Plug 'ervandew/supertab'
 Plug 'tomasr/molokai'
+Plug 'tomasiser/vim-code-dark'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
@@ -18,7 +19,6 @@ Plug 'gcmt/wildfire.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/syntastic'
 Plug 'yonchu/accelerated-smooth-scroll'
-" Plug 'Shougo/neocomplete.vim'
 Plug 'rking/ag.vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'tpope/vim-fugitive'
@@ -27,23 +27,24 @@ Plug 'edkolev/promptline.vim'
 Plug 'mhinz/vim-signify'
 " 缩进对齐线
 Plug 'Yggdroot/indentLine'
-"Plug 'edkolev/tmuxline.vim'
 Plug 'CodeFalling/fcitx-vim-osx'
-"Plug 'Valloric/YouCompleteMe'
-"Plug 'wkentaro/conque.vim'
-
-Plug 'roxma/nvim-completion-manager'
-"Plug 'roxma/nvim-cm-php-language-server',  {'do': 'composer install && composer run-script parse-stubs'}
-
-
-" phpcomplete
-"Plug 'shawncplus/phpcomplete.vim'
-"Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-"Plug 'Shougo/unite.vim'
-"Plug 'm2mdas/phpcomplete-extended'
-"
 
 Plug 'stephpy/vim-php-cs-fixer'
 Plug 'editorconfig/editorconfig-vim'
+
+" GO
+Plug 'fatih/vim-go'
+Plug 'vim-jp/vim-go-extra'
+Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.vim/plugged/gocode/nvim/symlink.sh' }
+Plug 'ncm2/ncm2-go'
+Plug 'sebdah/vim-delve'
+
+" NCM2  https://github.com/ncm2/ncm2
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-tmux'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-syntax' | Plug 'Shougo/neco-syntax'
 
 call plug#end()

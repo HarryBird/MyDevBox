@@ -54,7 +54,7 @@ POWERLEVEL9K_MODE='awesome-fontconfig'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 #alias vim="/usr/local/Cellar/vim/7.4.488/bin/vim"
-alias vim="/usr/local/bin/nvim"
+alias vim="/usr/local/Cellar/neovim/0.3.1/bin/nvim"
 alias tmux="tmux -2"
 alias tm-ls="tmux list-sessions"
 alias tm-at="tmux attach -t "
@@ -97,7 +97,8 @@ alias ipinfo="curl ifconfig.me && curl ifconfig.me/host"
 
 alias perm_wireshark="sudo chgrp admin /dev/bpf* && chmod g+rw /dev/bpf*"
 
-alias pon='export http_proxy=http://duotai:pEZ-0aBY8@smartisan.h.xduotai.com:25159;export https_proxy=$http_proxy'
+alias pon='export http_proxy=http://duotai:pEZ-0aBY8@smartisan.h.timonit.cn:25159;export https_proxy=$http_proxy'
+alias pon2='export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087'
 alias poff='unset http_proxy;unset https_proxy'
 alias gfw='proxychains4'
 
@@ -175,7 +176,11 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH=$PATH:/Users/harry/bin:/usr/local/bin:
+export GOPATH=/Users/harry/Code/GeekBang/go
+export GOBIN=$GOPATH/bin
+export GOROOT=/usr/local/go
+export PATH=$PATH:/Users/harry/bin:/usr/local/bin:$GOROOT/bin:$GOBIN
+
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 export JRE_HOME=$JAVA_HOME/jre
 export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib  

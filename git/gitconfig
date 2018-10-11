@@ -32,3 +32,8 @@
 	keepBackup = true
 [commit]
 	template = /Users/harry/.stCommitMsg
+
+[url "git@git.geekbang.org:"]
+    insteadOf = http://git.geekbang.org/
+[merge]
+	tool = code
