@@ -1,0 +1,11 @@
+[
+  {
+    "path": "/public/v1/config/getNav?test=201811071723",
+    "method": "GET",
+    "headers": {
+      "Referer": "******",
+      "x-forwarded-proto": "https",
+      "Host": "*****"
+    }
+  }
+]
