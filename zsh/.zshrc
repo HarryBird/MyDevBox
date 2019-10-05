@@ -76,7 +76,12 @@ alias va-po="cd /Users/harry/V/WebDevBox && vagrant provision"
 
 #alias ls="ls --color=auto"
 #alias ll="ls --color -al"
-alias ll="ls -al"
+alias ls='lsd'
+alias l='lsd -l'
+alias la='lsd -a'
+alias ll='lsd -la'
+alias lt='lsd --tree'
+alias llt='lsd -la --tree'
 alias grep='grep --color=auto'
 # 创建密码
 alias genpasswd="strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n'; echo"
@@ -97,9 +102,9 @@ alias ipinfo="curl ifconfig.me && curl ifconfig.me/host"
 
 alias perm_wireshark="sudo chgrp admin /dev/bpf* && chmod g+rw /dev/bpf*"
 
-alias pon='export http_proxy=http://duotai:pEZ-0aBY8@smartisan.h.timonit.cn:25159;export https_proxy=$http_proxy'
-alias pon2='export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087'
-alias poff='unset http_proxy;unset https_proxy'
+alias pon='export https_proxy=http://127.0.0.1:7890;export http_proxy=http://127.0.0.1:7890;export all_proxy=socks5h://127.0.0.1:7891'
+alias pon2='export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;'
+alias poff='unset http_proxy;unset https_proxy;unset all_proxy'
 alias gfw='proxychains4'
 
 eval $(/usr/local/bin/thefuck --alias geek)
@@ -185,6 +190,8 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 export JRE_HOME=$JAVA_HOME/jre
 export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib  
 export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
+
+export SSLKEYLOGFILE=/Users/harry/.ssl/sslkeylog.log
 
 
 #PROMPT='%{$fg_bold[red]%}➜ %{$fg_bold[green]%}%p%{$fg[cyan]%}%d %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%}% %{$reset_color%}> '
