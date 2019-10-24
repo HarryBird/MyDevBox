@@ -1,11 +1,11 @@
 [core]
 	excludesfile = /Users/harry/.gitignore_global
-[difftool "sourcetree"]
-	cmd = /usr/local/bin/bcomp $LOCAL $REMOTE
-	path = 
-[mergetool "sourcetree"]
-	cmd = /usr/local/bin/bcomp $LOCAL $REMOTE $BASE $MERGED
-	trustExitCode = true
+;[difftool "sourcetree"]
+;	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$LOCAL\" \"$REMOTE\"
+;	path = 
+;[mergetool "sourcetree"]
+;	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+;	trustExitCode = true
 [user]
 	name = harry
 	email = harry.tian@geekbang.org
@@ -28,12 +28,29 @@
 
 [color]
 	ui = true
-[mergetool]
-	keepBackup = true
 [commit]
 	template = /Users/harry/.stCommitMsg
 
 [url "git@git.geekbang.org:"]
     insteadOf = http://git.geekbang.org/
+
 [merge]
-	tool = code
+    keepBackup = false
+	tool = p4merge
+[mergetool "p4merge"]
+	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge "\"$PWD/$BASE\"" "\"$PWD/$LOCAL\"" "\"$PWD/$REMOTE\"" "\"$PWD/$MERGED\""
+	keepTemporaries = false
+	trustExitCode = false
+	keepBackup = false
+[diff]
+    tool = p4merge
+[difftool]
+    prompt = false
+[difftool "p4merge"]
+	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge "\"$REMOTE\"" "\"$LOCAL\""
+[difftool "sourcetree"]
+	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+	trustExitCode = true

@@ -182,9 +182,13 @@ tmux_conf_theme_right_separator_sub='\uE0B3'  #   PowerlineSymbols.otf font, see
 tmux_conf_theme_status_left=' ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} '
 tmux_conf_theme_status_right='#{prefix}#{pairing}#{synchronized} #{?battery_status, #{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %m-%d | #{username}#{root} | #{hostname} '
 
+tmux_conf_theme_status_left=' ❐ #S | #{prefix}#{pairing}#{synchronized} '
+tmux_conf_theme_status_right=''
+
 # status left style
 tmux_conf_theme_status_left_fg='#000000,#e4e4e4,#e4e4e4'  # black, white , white
-tmux_conf_theme_status_left_bg='#ffff00,#ff00af,#00afff'  # yellow, pink, white blue
+#tmux_conf_theme_status_left_bg='#ffff00,#ff00af,#00afff'  # yellow, pink, white blue
+tmux_conf_theme_status_left_bg='#ffff00,#000000,#00afff'  # yellow, pink, white blue
 tmux_conf_theme_status_left_attr='bold,none,none'
 
 # status right style
@@ -294,7 +298,7 @@ tmux_conf_copy_to_os_clipboard=false
 # bind C-a send-prefix
 
 # move status line to top
-#set -g status-position top
+# set -g status-position bottom
 
 
 # 去除默认Ctrl-b
