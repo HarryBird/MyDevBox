@@ -1,0 +1,69 @@
+{
+    "go.gopath": "/Users/harry/Code/GeekBang/go",
+    "editor.fontSize": 16,
+    "workbench.sideBar.location": "left",
+    "workbench.activityBar.visible": true,
+    "go.autocompleteUnimportedPackages": true,
+    "editor.wordWrap": "on",
+    "editor.renderWhitespace": "all",
+    "go.liveErrors": {
+        "enabled": true,
+        "delay": 500
+    },
+    "go.formatTool": "gofmt",
+    "go.vetOnSave": "package",
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 3000,
+    "editor.acceptSuggestionOnEnter": "smart",
+    "editor.minimap.enabled": true,
+    "editor.renderControlCharacters": true,
+    "breadcrumbs.enabled": true,
+    "go.goroot": "/usr/local/go",
+    "go.gotoSymbol.includeGoroot": true,
+    "go.gotoSymbol.includeImports": true,
+    "go.toolsGopath": "/Users/harry/Code/GeekBang/go/bin",
+    "go.toolsEnvVars":{
+        "GO111MODULE": "on"
+    },
+    "go.testFlags": [
+        "-v"
+    ],
+    "go.docsTool": "guru",
+    "window.zoomLevel": 0,
+    "editor.fontFamily": "'M+ 1mn',Menlo, Monaco, 'Courier New', monospace",
+    "editor.cursorStyle": "block",
+    "files.exclude": {
+        "**/.vscode": true
+    },
+    "vim.easymotion": true,
+    "vim.statusBarColorControl": true,
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#005f5f",
+        "statusBar.noFolderBackground": "#005f5f",
+        "statusBar.debuggingBackground": "#005f5f"
+    },
+    "vim.leader": ",",
+    "vim.easymotionMarkerFontFamily": "Monaco",
+    "vim.easymotionMarkerFontSize": "18",
+    "vim.easymotionMarkerFontWeight": "bold",
+    "vim.hlsearch": true,
+    "vim.sneak": true,
+    "php.executablePath": "/usr/bin/php",
+    "php.validate.executablePath": "/usr/bin/php",
+    "editor.quickSuggestionsDelay": 100,
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": false
+    },
+    "diffEditor.ignoreTrimWhitespace": false,
+    "diffEditor.renderSideBySide": true,
+    "go.lintTool": "golangci-lint",
+    "go.lintFlags": [
+        "--fast"
+    ],
+    "go.lintOnSave": "workspace",
+    "go.useLanguageServer": true,
+    "vsicons.dontShowNewVersionMessage": true,
+    "terminal.external.osxExec": "iTerm.app"
+}
