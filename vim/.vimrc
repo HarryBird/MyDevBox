@@ -430,7 +430,9 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 let g:EditorConfig_exec_path = '/usr/local/bin/editorconfig'
 
 " ======= Load Python ========= "
-let g:python_host_prog = '/usr/bin/python'
+" let g:python_host_prog = '/usr/bin/python'
+let g:python_host_prog = '/Users/harry/opt/anaconda3/bin/python3'
+let g:python3_host_prog = '/Users/harry/opt/anaconda3/bin/python3'
 
 " "}}}
 

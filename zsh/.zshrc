@@ -1,3 +1,4 @@
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -59,7 +60,10 @@ POWERLEVEL9K_MODE='nerdfont-complete'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 #alias vim="/usr/local/Cellar/vim/7.4.488/bin/vim"
-alias vim="/usr/local/Cellar/neovim/0.3.1/bin/nvim"
+export GIT_EDITOR=/Users/harry/bin/nvim/bin/nvim
+
+alias vim="/Users/harry/bin/nvim/bin/nvim"
+alias vi=vim
 alias tmux="tmux -2"
 alias tm-ls="tmux list-sessions"
 alias tm-at="tmux attach -t "
@@ -111,6 +115,12 @@ alias pon='export https_proxy=http://127.0.0.1:7890;export http_proxy=http://127
 alias pon2='export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;'
 alias poff='unset http_proxy;unset https_proxy;unset all_proxy'
 alias gfw='proxychains4'
+
+alias down='/usr/local/bin/aria2c'
+alias down-daemon='/usr/local/bin/aria2c --enable-rpc --rpc-listen-all --rpc-secret=harryport'
+alias weather='curl -H "Accept-Language: zh" "http://wttr.in"'
+
+alias jump='ssh -p2222 harry.tian@jumpserver.geekbang.org'
 
 eval $(/usr/local/bin/thefuck --alias geek)
 
@@ -185,16 +195,27 @@ plugins=(git autojump osx docker docker-compose)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+#
 
 export GOPATH=/Users/harry/Code/GeekBang/go
 export GOBIN=$GOPATH/bin
 export GOROOT=/usr/local/go
-export PATH=$PATH:/Users/harry/bin:/usr/local/bin:$GOROOT/bin:$GOBIN
+export GOPRIVATE='code.geekbang.org/rd/*'
+#export GOPROXY=https://gomodproxy.geekbang.org,direct
+export GOPROXY=https://goproxy.cn,direct
 
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 export JRE_HOME=$JAVA_HOME/jre
 export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib  
-export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
+
+export ANDROID_HOME=/Users/harry/Library/Android/sdk
+export ANDROID_SDK_ROOT=$ANDROID_HOME
+
+export -U ANDROID_SDK=$ANDROID_HOME:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+export -U JAVABIN=$JAVA_HOME/bin:$JRE_HOME/bin
+export -U HARRYBIN=$HOME/bin:$HOME/bin/fzf:$GOROOT/bin:$GOBIN
+export -U LOCALBIN=/usr/local/bin:/usr/local/sbin
+export -U PATH=$HARRYBIN:$LOCALBIN:$JAVABIN:$ANDROID_SDK:$PATH:
 
 export SSLKEYLOGFILE=/Users/harry/.ssl/sslkeylog.log
 
@@ -203,6 +224,17 @@ export SSLKEYLOGFILE=/Users/harry/.ssl/sslkeylog.log
 #PROMPT='%{$fg_bold[yellow]%}%n%{$fg_bold[red]%} ➽  %{$fg[green]%}%5(C.%-3d/~~/%1d.%d) %{$fg_bold[blue]%}$(git_prompt_info) %{$fg_bold[red]%}% ➜  %{$reset_color%}'
 
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
+[[ -s ~/bin/z ]] && . ~/bin/z
+
+##### fzf and completion #####
+# Auto-completion
+# ---------------
+[[ $- == *i* ]] && source "/Users/harry/bin/fzf/completion.zsh" 2> /dev/null
+
+# Key bindings
+# ------------
+source "/Users/harry/bin/fzf/key-bindings.zsh"
+
 autoload -U compinit && compinit -u
 
 # explain.sh begins
@@ -262,3 +294,23 @@ function docker-enter() {
         fi
     fi
 }
+
+TRAPWINCH() {
+  zle && { zle reset-prompt; zle -R }
+}
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/harry/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/harry/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/harry/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/harry/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

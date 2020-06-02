@@ -1,1 +1,1 @@
-/Users/harry/Code/GeekBang/go/src/github.com/mdempsky/gocode/nvim/ftplugin/go/gocomplete.vim
+/Users/harry/.vim/plugged/gocode/nvim/ftplugin/go/gocomplete.vim
