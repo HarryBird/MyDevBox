@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -7,53 +14,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="powerlevel9k/powerlevel9k"
-#POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-#POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-#POWERLEVEL9K_RPROMPT_ADD_NEWLINE=true
-#POWERLEVEL9K_PROMPT_ADD_NEWLINE_COUNT=2
-#POWERLEVEL9K_DISABLE_RPROMPT=true
-#
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context time dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ram battery disk_usage)
-
-# CONTEXT
-POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
-POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="130"
-POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="234"
-
-# TIME 
-POWERLEVEL9K_TIME_BACKGROUND="187"
-POWERLEVEL9K_TIME_FOREGROUND="234"
-
-# OS_ICON
-POWERLEVEL9K_OS_ICON_BACKGROUND="22"
-
-# DIR
-POWERLEVEL9K_DIR_HOME_BACKGROUND="025"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="025"
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="025"
-POWERLEVEL9K_DIR_HOME_FOREGROUND="250"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="250"
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="250"
-POWERLEVEL9K_SHORTEN_STRATEGY=truncate_from_right
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
-POWERLEVEL9K_SHORTEN_DELIMITER='~'
-#POWERLEVEL9K_DIR_PATH_SEPARATOR="%B"
-
-# VCS
-POWERLEVEL9K_VCS_CLEAN_FOREGROUND='106'
-POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='136'
-POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='208'
-
-POWERLEVEL9K_VCS_CLEAN_BACKGROUND='240'
-POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='240'
-POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='240'
-
-# FONT
-# POWERLEVEL9K_MODE='awesome-fontconfig'
-POWERLEVEL9K_MODE='nerdfont-complete'
+# ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -63,7 +25,9 @@ POWERLEVEL9K_MODE='nerdfont-complete'
 export GIT_EDITOR=/Users/harry/bin/nvim/bin/nvim
 
 alias vim="/Users/harry/bin/nvim/bin/nvim"
-alias vi=vim
+#alias vi=vim
+alias py="/Users/harry/opt/anaconda3/bin/python"
+alias ipy="/Users/harry/opt/anaconda3/bin/ipython"
 alias tmux="tmux -2"
 alias tm-ls="tmux list-sessions"
 alias tm-at="tmux attach -t "
@@ -120,7 +84,15 @@ alias down='/usr/local/bin/aria2c'
 alias down-daemon='/usr/local/bin/aria2c --enable-rpc --rpc-listen-all --rpc-secret=harryport'
 alias weather='curl -H "Accept-Language: zh" "http://wttr.in"'
 
-alias jump='ssh -p2222 harry.tian@jumpserver.geekbang.org'
+alias jump='ssh -p2222 harry.tian@39.105.166.15'
+alias jump-ftp='sftp -P2222 harry.tian@39.105.166.15'
+alias clash-conf-edit='vim /Users/harry/.config/clash/neoapi.co.yaml'
+
+alias mycli-local='mycli -h127.0.0.1 -uharry -pharry'
+alias mycli-polar-slave='mycli -hpolar-pub-data-ro-001.rwlb.rds.aliyuncs.com -ugeekbang -px8$O42myY7F5'
+
+alias rm=trash
+alias go-dev='ssh harry@112.126.60.133'
 
 eval $(/usr/local/bin/thefuck --alias geek)
 
@@ -190,19 +162,20 @@ fi
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git autojump osx docker docker-compose)
+plugins=(git tmux osx docker docker-compose zsh-syntax-highlighting zsh-autosuggestions zsh-completions)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 #
 
-export GOPATH=/Users/harry/Code/GeekBang/go
+#export GOPATH=/Users/harry/Code/GeekBang/go
+export GOPATH=/Users/harry/go
 export GOBIN=$GOPATH/bin
 export GOROOT=/usr/local/go
 export GOPRIVATE='code.geekbang.org/rd/*'
 #export GOPROXY=https://gomodproxy.geekbang.org,direct
-export GOPROXY=https://goproxy.cn,direct
+export GOPROXY=https://goproxy.io,direct
 
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 export JRE_HOME=$JAVA_HOME/jre
@@ -314,3 +287,75 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+#POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+#POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+#POWERLEVEL9K_RPROMPT_ADD_NEWLINE=true
+#POWERLEVEL9K_PROMPT_ADD_NEWLINE_COUNT=2
+#POWERLEVEL9K_DISABLE_RPROMPT=true
+#
+#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context time dir vcs)
+typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir vcs newline)
+typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ram battery disk_usage time)
+
+
+# CONTEXT
+typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
+typeset -g POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="130"
+typeset -g POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="239"
+
+# TIME 
+POWERLEVEL9K_TIME_BACKGROUND="011"
+POWERLEVEL9K_TIME_FOREGROUND="239"
+
+# OS_ICON
+POWERLEVEL9K_OS_ICON_BACKGROUND="160"
+POWERLEVEL9K_OS_ICON_FOREGROUND="015"
+
+# DIR
+POWERLEVEL9K_DIR_HOME_BACKGROUND="034"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="034"
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="034"
+
+POWERLEVEL9K_DIR_HOME_FOREGROUND="235"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="235"
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="235"
+POWERLEVEL9K_DIR_SHORTENED_FOREGROUND="235"
+POWERLEVEL9K_DIR_ANCHOR_FOREGROUND="235"
+
+POWERLEVEL9K_SHORTEN_STRATEGY=truncate_from_right
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
+POWERLEVEL9K_SHORTEN_DELIMITER='~'
+#POWERLEVEL9K_DIR_PATH_SEPARATOR="%B"
+POWERLEVEL9K_DIR_ANCHOR_BOLD=true
+
+# VCS
+POWERLEVEL9K_VCS_CLEAN_FOREGROUND='015'
+POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='015'
+POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='015'
+
+POWERLEVEL9K_VCS_CLEAN_BACKGROUND='002'
+POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='214'
+POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='190'
+
+# STATUS
+# POWERLEVEL9K_STATUS_BACKGROUND="202"
+
+# RAM
+POWERLEVEL9K_RAM_BACKGROUND="002"
+POWERLEVEL9K_RAM_FOREGROUND="011"
+
+# BATTERY
+POWERLEVEL9K_BATTERY_BACKGROUND="057"
+POWERLEVEL9K_BATTERY_FOREGROUND="011"
+
+# DISK_USAGE
+POWERLEVEL9K_DISK_USAGE_BACKGROUND="125"
+POWERLEVEL9K_DISK_USAGE_FOREGROUND="011"
+
+# FONT
+# POWERLEVEL9K_MODE='awesome-fontconfig'
+# POWERLEVEL9K_MODE='nerdfont-complete'

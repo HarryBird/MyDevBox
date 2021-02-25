@@ -437,3 +437,8 @@ inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 " Use <TAB> to select the popup menu:
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> \<S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" ======= Load Python ========= "
+" let g:python_host_prog = '/usr/bin/python'
+let g:python_host_prog = '/Users/harry/opt/anaconda3/bin/python3'
+let g:python3_host_prog = '/Users/harry/opt/anaconda3/bin/python3'
