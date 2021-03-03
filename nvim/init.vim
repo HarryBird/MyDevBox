@@ -383,8 +383,8 @@ let g:php_cs_fixer_verbose = 0                    " Return the output of command
 "autocmd FileType go autocmd BufWritePre <buffer> GoFmt
 
 " ======= vim-go ========= "
-"let g:go_list_type = "quickfix"
-"let g:go_fmt_command = "goimports"
+let g:go_list_type = "quickfix"
+let g:go_fmt_command = "goimports"
 "let g:go_fmt_fail_silently = 1
 "let g:go_addtags_transform = "camelcase"
 
@@ -417,7 +417,7 @@ autocmd FileType go nmap <F3>  :GoMetaLinter<CR>
 
 " ======= NCM2 ===========
 " enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
+" autocmd BufEnter * call ncm2#enable_for_buffer()
 
 " IMPORTANTE: :help Ncm2PopupOpen for more information
 set completeopt=noinsert,menuone,noselect
@@ -439,6 +439,5 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> \<S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " ======= Load Python ========= "
-" let g:python_host_prog = '/usr/bin/python'
-let g:python_host_prog = '/Users/harry/opt/anaconda3/bin/python3'
-let g:python3_host_prog = '/Users/harry/opt/anaconda3/bin/python3'
+let g:python_host_prog = '/Users/harry/.bin/python3'
+let g:python3_host_prog = '/Users/harry/.bin/python3'
