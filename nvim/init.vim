@@ -413,11 +413,12 @@ autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 
 autocmd FileType go nmap <F3>  :GoMetaLinter<CR>
+autocmd filetype go inoremap <buffer> . .<C-x><C-o>
 
 
 " ======= NCM2 ===========
 " enable ncm2 for all buffers
-" autocmd BufEnter * call ncm2#enable_for_buffer()
+autocmd BufEnter * call ncm2#enable_for_buffer()
 
 " IMPORTANTE: :help Ncm2PopupOpen for more information
 set completeopt=noinsert,menuone,noselect
@@ -439,5 +440,5 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> \<S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " ======= Load Python ========= "
-let g:python_host_prog = '/Users/harry/.bin/python3'
+let g:python_host_prog = '/Users/harry/.bin/python2'
 let g:python3_host_prog = '/Users/harry/.bin/python3'
